@@ -9,18 +9,26 @@ namespace DistanceConverter {
         static void Main(string[] args)
         {
             if (args.Length >= 1 && args[0] == "-tom") {
-                for (int feet = 1; feet <= 10; feet++) {
-                    double meter = FeetMeter(feet);
-                    Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
-                }
-
+                PrintFeetToMeterList(1,10);
             } else {
                 //メートルからフィートへの対応力を出力
-                for (int meter = 1; meter <= 10; meter++) {
-                    double feet = MeterToFeet(meter);
-                    Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
+                PrintMeterToFeetList(1,10);
+            }
+        }
 
-                }
+        private static void PrintMeterToFeetList(int start,int stop)
+        {
+            for (int meter = start; meter <= stop; meter++) {
+                double feet = MeterToFeet(meter);
+                Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
+            }
+        }
+
+        private static void PrintFeetToMeterList(int start,int stop)
+        {
+            for (int feet = start; feet <= stop; feet++) {
+                double meter = FeetMeter(feet);
+                Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
             }
         }
 
