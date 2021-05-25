@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DistanceConverter {
     class FreetConverter {
+        public const double ratio = 0.3048;
+
+
         //メートルからフィートを求める
         public static double FromMeter(double meter)
         {
