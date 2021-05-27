@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter02", "Chapter02", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "DistanceConverter\DistanceConverter.csproj", "{840C13C6-190E-4E04-AF78-CB4B16E1143A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesCalculator", "SalesCalculator\SalesCalculator\SalesCalculator.csproj", "{99FD014D-8F08-40A3-8C06-8F60487F6739}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesCalculator", "SalesCalculator\SalesCalculator.csproj", "{99FD014D-8F08-40A3-8C06-8F60487F6739}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +29,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{840C13C6-190E-4E04-AF78-CB4B16E1143A} = {26ED57D9-3FC9-4FD3-BC8C-4448C9D96DC2}
+		{99FD014D-8F08-40A3-8C06-8F60487F6739} = {26ED57D9-3FC9-4FD3-BC8C-4448C9D96DC2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A20DEE8C-7300-48FC-A846-021FE9D758AA}
