@@ -9,7 +9,13 @@ namespace SalesCalculator {
     class Program {
         static void Main(string[] args)
         {
-            List<Sale> sales = ReadSales("Sales.csv");
+            List<Sale> sales = (ReadSales("Sales.csv"));
+
+            Dictionary<string, int> amountPerStores = sales.GetPerStoreSales();
+            foreach (KeyValuePair<string, int> obj in amountPerStore) 
+            {
+                Console.WriteLine("{} {}");
+            }
         }
         static List<Sale> ReadSales(string filePath)
         {

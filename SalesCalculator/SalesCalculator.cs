@@ -24,8 +24,10 @@ namespace SalesCalculator {
             foreach(Sale sale in _sales) 
             {
                 if (dict.ContainsKey(sale.ShopName))
+                    //既に
                     dict[sale.ShopName] += sale.Amount;
                 else
+                    //
                     dict[sale.ShopName] = sale.Amount;
             }
             return dict;
