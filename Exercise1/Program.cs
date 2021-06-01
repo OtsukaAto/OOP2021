@@ -9,7 +9,7 @@ namespace Exercise1 {
         static void Main(string[] args)
         {
             //2.1.3
-            var song = new Song[] {
+            var songs = new Song[] {
                 new Song("Creepy Nuts","Who am I",823),
                 new Song("RHYMESTER","K.U.F.U",265),
                 new Song("RUN D.M.C","Walk This Way",339),
@@ -20,7 +20,7 @@ namespace Exercise1 {
         }
 
         //2.1.4
-        private static void PrintSongs(Song[] song) 
+        private static void PrintSongs(Song[] songs) 
         {
             foreach (var song in songs) 
             {

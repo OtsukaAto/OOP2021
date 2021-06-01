@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace SalesCalculator {
     //売り上げ集計クラス
-    class SalesCalculator 
+    class SalesCounter 
     {
         private List<Sale> _sales;
 
         //コンストラクタ
-        public SalesCalculator(List<Sale> sales) 
+        public SalesCounter(string filePath) 
         {
-            _sales = sales;
+            _sales = ReadSales(filePath);
         }
 
         private static List<Sale> ReadSales(string filePath) 
