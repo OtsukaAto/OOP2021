@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise01 {
     //4.1.1
-    class YearMonth 
+    public class YearMonth 
     {
         public int Year { get; private set; }
         public int Month { get; private set; }
@@ -28,11 +28,11 @@ namespace Exercise01 {
         //4.1.3
         public YearMonth AddOneMonth() 
         {
-            YearMonth ym = new YearMonth (this.Year, this.Month);
-            Month++;
             if (Month < 12) 
             {
-                Month = 1;
+                return
+                YearMonth ym = new YearMonth(this.Year, this.Month);
+                Month++;
                 Year++;
             }
         }
