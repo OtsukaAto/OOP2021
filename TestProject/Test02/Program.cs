@@ -66,7 +66,7 @@ namespace Test02 {
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
 
-            var count = Count(numbers, n => 10 <= n && <= 50);
+            var count = Count(numbers, n => 10 <= n && <= 50);　
 
         }
 
