@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Test02 {
     class Program {
+        private static int num;
+        private static int count;
+
         static void Main(string[] args) {
             var numbers = new List<int> {
                     12, 87, 94, 14, 53, 20, 40, 35, 76, 91, 31, 17, 48
@@ -35,9 +38,12 @@ namespace Test02 {
 
         //問題１　合計値を表示
         //　　　　出力結果【618】
-        private static void Exercise01(List<int> numbers) {
-
-
+        private static int Exercise01(List<int> numbers) {
+            foreach(var n in numbers) {
+                if (n == num)
+                    count++;
+            }
+            return count;
 
         }
 
@@ -60,8 +66,13 @@ namespace Test02 {
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
 
+            var count = Count(numbers, n => 10 <= n && <= 50);
 
+        }
 
+        private static object Count(List<int> numbers, Func<object, bool> p)
+        {
+            throw new NotImplementedException();
         }
     }
 }
