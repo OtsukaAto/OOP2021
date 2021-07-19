@@ -76,9 +76,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="画像集\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="画像集\30ソアラ.jpg" />
+    <Content Include="画像集\30ソアラ_1.jpg" />
+    <Content Include="画像集\BMW.jpg" />
+    <Content Include="画像集\FD.jpg" />
+    <Content Include="画像集\FD_red.jpg" />
+    <Content Include="画像集\GTR.jpg" />
+    <Content Include="画像集\GZ20.jpg" />
+    <Content Include="画像集\Juke-R.jpg" />
+    <Content Include="画像集\LS.jpg" />
+    <Content Include="画像集\MZ21.jpg" />
+    <Content Include="画像集\sora.jpg" />
+    <Content Include="画像集\umi.jpg" />
+    <Content Include="画像集\yuuyake.jpg" />
+    <Content Include="画像集\ジムニー.jpg" />
+    <Content Include="画像集\ジムニーシエラ.jpg" />
+    <Content Include="画像集\ベンツ.jpg" />
+    <Content Include="画像集\ポルシェ.jpg" />
+    <Content Include="画像集\レクサス.jpg" />
+    <Content Include="画像集\天文台.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

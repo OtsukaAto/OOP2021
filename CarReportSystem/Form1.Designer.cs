@@ -306,7 +306,6 @@ namespace CarReportSystem {
             this.btDataDelete.TabIndex = 9;
             this.btDataDelete.Text = "削除";
             this.btDataDelete.UseVisualStyleBackColor = true;
-            this.btDataDelete.Click += new System.EventHandler(this.btDataDelete_Click_1);
             // 
             // btOpen
             // 
