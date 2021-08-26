@@ -13,8 +13,7 @@ namespace Sample0823
     public partial class Form1 : Form
     {
         public Form1()
-        {
-            InitializeComponent();
+        {            InitializeComponent();
         }
 
         private void Exec_Click(object sender, EventArgs e)
