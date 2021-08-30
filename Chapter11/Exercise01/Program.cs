@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 
@@ -32,9 +33,37 @@ namespace Exercise1 {
 
 
 
+            Exercise1_4(file);
+            Console.WriteLine("----------");
+
+
+
+
+
 
 
         }
+
+
+
+        private static void Exercise1_4(string file)
+        {
+            var newfile = "sports.xml";
+            var xdoc = XDocument.Load(file);
+            var element = new XElement("ballsport",
+                 new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
+                 new XElement("teammembers", "11"),
+                 new XElement("firstplayed", "1863")
+              );
+            xdoc.Root.Add(element);
+            xdoc.Save(newfile);
+
+
+
+        }
+
+
+
         private static void Exercise1_1(string file)
         {
             var xdoc = XDocument.Load(file);
