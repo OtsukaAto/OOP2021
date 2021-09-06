@@ -78,6 +78,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WeatherApp", "WeatherApp", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "WeatherApp\WeatherApp\WeatherApp\WeatherApp.csproj", "{FC2BE73B-8599-4842-B036-C1463DC1B7B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RssReader", "RssReader", "{E4AD8139-960C-453C-8329-2FA9FABFBAA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssReader", "RssReader\RssReader\RssReader.csproj", "{0FEEF4E7-4243-4D5D-B9CA-742EB75C9291}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -180,6 +184,10 @@ Global
 		{FC2BE73B-8599-4842-B036-C1463DC1B7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC2BE73B-8599-4842-B036-C1463DC1B7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC2BE73B-8599-4842-B036-C1463DC1B7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FEEF4E7-4243-4D5D-B9CA-742EB75C9291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FEEF4E7-4243-4D5D-B9CA-742EB75C9291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FEEF4E7-4243-4D5D-B9CA-742EB75C9291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FEEF4E7-4243-4D5D-B9CA-742EB75C9291}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -211,6 +219,7 @@ Global
 		{83F84FB9-63A1-4061-9675-E96892D6B15C} = {8BE62C0B-00BE-400E-A5EF-92E5EBBEB2DA}
 		{2CFC62AB-64AE-4BB4-932C-D1D5F622B65A} = {5B287902-3E96-4DDF-BBAB-7C2A1FD8BB70}
 		{FC2BE73B-8599-4842-B036-C1463DC1B7B5} = {4123E7E5-EC83-44F4-BFBE-4D03AC136176}
+		{0FEEF4E7-4243-4D5D-B9CA-742EB75C9291} = {E4AD8139-960C-453C-8329-2FA9FABFBAA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A20DEE8C-7300-48FC-A846-021FE9D758AA}
