@@ -35,10 +35,9 @@ namespace RssReader {
 
 
                 XDocument xdoc = XDocument.Load(stream);
-                var nodes = xdoc.Root.Descendants("TITLE");
-                foreach (var node in nodes) 
-                {
-                    lbTitles.Items.Add(Regex.Replace(node.Value, "【|】", ""));
+                var nodes = xdoc.Root.Descendants("title");
+                foreach (var node in nodes) {
+                    lbTitles.Items.Add((node.Value));
                 }
             }
         }
