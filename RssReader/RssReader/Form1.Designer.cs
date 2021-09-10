@@ -38,6 +38,7 @@ namespace RssReader {
             this.lbTitles = new System.Windows.Forms.ListBox();
             this.wbBrowser = new System.Windows.Forms.WebBrowser();
             this.btRead = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +55,7 @@ namespace RssReader {
             // tbUrl
             // 
             this.tbUrl.Location = new System.Drawing.Point(202, 22);
-            this.tbUrl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbUrl.Margin = new System.Windows.Forms.Padding(4);
             this.tbUrl.Name = "tbUrl";
             this.tbUrl.Size = new System.Drawing.Size(635, 25);
             this.tbUrl.TabIndex = 1;
@@ -64,15 +65,16 @@ namespace RssReader {
             this.lbTitles.FormattingEnabled = true;
             this.lbTitles.ItemHeight = 18;
             this.lbTitles.Location = new System.Drawing.Point(13, 72);
-            this.lbTitles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbTitles.Margin = new System.Windows.Forms.Padding(4);
             this.lbTitles.Name = "lbTitles";
             this.lbTitles.Size = new System.Drawing.Size(335, 454);
             this.lbTitles.TabIndex = 2;
+            this.lbTitles.Click += new System.EventHandler(this.lbTitles_Click);
             // 
             // wbBrowser
             // 
             this.wbBrowser.Location = new System.Drawing.Point(359, 72);
-            this.wbBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.wbBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(25, 24);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
@@ -82,7 +84,7 @@ namespace RssReader {
             // btRead
             // 
             this.btRead.Location = new System.Drawing.Point(862, 22);
-            this.btRead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btRead.Margin = new System.Windows.Forms.Padding(4);
             this.btRead.Name = "btRead";
             this.btRead.Size = new System.Drawing.Size(94, 28);
             this.btRead.TabIndex = 4;
@@ -90,17 +92,27 @@ namespace RssReader {
             this.btRead.UseVisualStyleBackColor = true;
             this.btRead.Click += new System.EventHandler(this.btRead_Click);
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(981, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(229, 454);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "label2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 540);
+            this.ClientSize = new System.Drawing.Size(1221, 553);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btRead);
             this.Controls.Add(this.wbBrowser);
             this.Controls.Add(this.lbTitles);
             this.Controls.Add(this.tbUrl);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "32259";
             this.ResumeLayout(false);
@@ -119,6 +131,7 @@ namespace RssReader {
         private System.Windows.Forms.ListBox lbTitles;
         private System.Windows.Forms.WebBrowser wbBrowser;
         private System.Windows.Forms.Button btRead;
+        private System.Windows.Forms.Label label2;
     }
 }
 
