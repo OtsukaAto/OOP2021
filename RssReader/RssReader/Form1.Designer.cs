@@ -99,7 +99,7 @@ namespace RssReader {
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(229, 454);
             this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
+            this.label2.Text = "lbDescription";
             // 
             // Form1
             // 

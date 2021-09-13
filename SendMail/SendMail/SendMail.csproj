@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0FEEF4E7-4243-4D5D-B9CA-742EB75C9291}</ProjectGuid>
+    <ProjectGuid>{A7E68E8B-AC5A-44A0-B599-5AD724FB6A87}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>RssReader</RootNamespace>
-    <AssemblyName>RssReader</AssemblyName>
+    <RootNamespace>SendMail</RootNamespace>
+    <AssemblyName>SendMail</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -52,7 +52,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
