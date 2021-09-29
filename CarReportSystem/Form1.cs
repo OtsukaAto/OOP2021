@@ -166,6 +166,10 @@ namespace CarReportSystem {
                     dgvRegistData.DataSource = null;
                     dgvRegistData.DataSource = listCarReport;
                 }
+                //読み込んだデータを各コンボボックスに登録する
+
+
+
             }
         }
     }
