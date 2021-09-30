@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SendMail {
-    public partial class メール送信アプリ : Form {
-        public メール送信アプリ()
+    public partial class Form1 : Form {
+        public Form1()
         {
             InitializeComponent();
         }
@@ -24,19 +24,22 @@ namespace SendMail {
                 MailMessage mailMessage = new MailMessage();
                 //差出人アドレス
                 mailMessage.From = new MailAddress("ojsinfosys01@gmail.com");
-                //宛先(To)
+                //宛先（To）
                 mailMessage.To.Add(tbTo.Text);
-                //件名(タイトル)
-                mailMessage.Subject = tbTitle.Text;
+                // mailMessage.To.Add(tbTo.Text);
+                mailMessage.CC.Add(tbCc.Text);
+                mailMessage.Bcc.Add(tbBcc.Text);
+                //件名（タイトル）
+                mailMessage.Subject = tbCc.Text;
                 //本文
                 mailMessage.Body = tbMessage.Text;
 
                 //SMTPを使ってメールを送信する
                 SmtpClient smtpClient = new SmtpClient();
-                //メール送信のための認証情報を設定(ユーザー名、)
+                //メール送信のための認証情報を設定（ユーザー名、パスワード）
                 smtpClient.Credentials
                     = new NetworkCredential("ojsinfosys01@gmail.com", "Infosys2021");
-                smtpClient.Host = "ojsinfosys01@gmail.com";
+                smtpClient.Host = "smtp.gmail.com";
                 smtpClient.Port = 587;
                 smtpClient.EnableSsl = true;
                 smtpClient.Send(mailMessage);
@@ -44,10 +47,13 @@ namespace SendMail {
                 MessageBox.Show("送信完了");
             }
             catch (Exception ex) {
-
                 MessageBox.Show(ex.Message);
-
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new ConfigForm().ShowDialog();
         }
     }
 }

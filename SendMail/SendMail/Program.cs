@@ -14,7 +14,7 @@ namespace SendMail {
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new メール送信アプリ());
+            Application.Run(new Form1());
         }
     }
 }
