@@ -40,7 +40,7 @@ namespace SendMail {
             this.btApply = new System.Windows.Forms.Button();
             this.cbSsl = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbSender = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
@@ -137,17 +137,16 @@ namespace SendMail {
             this.btOk.TabIndex = 2;
             this.btOk.Text = "OK";
             this.btOk.UseVisualStyleBackColor = true;
-            this.btOk.Click += new System.EventHandler(this.button2_Click);
+            this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(456, 229);
+            this.btCancel.Location = new System.Drawing.Point(451, 229);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 2;
             this.btCancel.Text = "キャンセル";
             this.btCancel.UseVisualStyleBackColor = true;
-            this.btCancel.Click += new System.EventHandler(this.button2_Click);
             // 
             // btApply
             // 
@@ -157,7 +156,7 @@ namespace SendMail {
             this.btApply.TabIndex = 2;
             this.btApply.Text = "適用";
             this.btApply.UseVisualStyleBackColor = true;
-            this.btApply.Click += new System.EventHandler(this.button2_Click);
+            this.btApply.Click += new System.EventHandler(this.btApply_Click);
             // 
             // cbSsl
             // 
@@ -179,13 +178,13 @@ namespace SendMail {
             this.label5.TabIndex = 0;
             this.label5.Text = "送信元";
             // 
-            // textBox5
+            // tbSender
             // 
-            this.textBox5.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox5.Location = new System.Drawing.Point(105, 12);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(136, 20);
-            this.textBox5.TabIndex = 1;
+            this.tbSender.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbSender.Location = new System.Drawing.Point(105, 12);
+            this.tbSender.Name = "tbSender";
+            this.tbSender.Size = new System.Drawing.Size(136, 20);
+            this.tbSender.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -207,7 +206,7 @@ namespace SendMail {
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.tbSender);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(40, 166);
             this.groupBox2.Name = "groupBox2";
@@ -243,7 +242,6 @@ namespace SendMail {
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbHost;
         private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.TextBox tbPort;
         private System.Windows.Forms.TextBox tbPass;
@@ -253,8 +251,9 @@ namespace SendMail {
         private System.Windows.Forms.Button btApply;
         private System.Windows.Forms.CheckBox cbSsl;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbSender;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.TextBox tbHost;
     }
 }

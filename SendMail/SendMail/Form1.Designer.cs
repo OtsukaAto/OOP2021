@@ -195,16 +195,16 @@ namespace SendMail {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbTo;
-        private System.Windows.Forms.TextBox tbCc;
         private System.Windows.Forms.TextBox tbMessage;
         private System.Windows.Forms.Button btSend;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbBcc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.TextBox tbTo;
+        public System.Windows.Forms.TextBox tbCc;
+        public System.Windows.Forms.TextBox tbBcc;
     }
 }
 

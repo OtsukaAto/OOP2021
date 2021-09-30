@@ -6,13 +6,26 @@ using System.Threading.Tasks;
 
 namespace SendMail {
     class Settings {
+
+        private static Settings instance = null;
+
         public int Port { get; set; }  //ポート番号
         public string Host { get; set; } //ホスト名
         public string MailAddr { get; set; } //メールアドレス
         public string Pass { get; set; } //パスワード
         public bool Ssl { get; set; } //SSL
 
+        //コンストラクタ
+        private Settings() { }
 
+        //インスタンスの取得
+        public static Settings getInstance()
+        {
+            if(instance == null) {
+                instance = new Settings();
+            }
+            return instance;
+        }
 
         //初期値
         public string sHost()
@@ -39,6 +52,11 @@ namespace SendMail {
         public string sPass()
         {
             return "OjsInfosys2019";
+        }
+
+        public bool bSsl()
+        {
+            return true;
         }
     }
 }
