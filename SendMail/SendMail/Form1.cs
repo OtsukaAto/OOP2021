@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SendMail {
     public partial class Form1 : Form {
@@ -83,6 +84,14 @@ namespace SendMail {
         private void btConfig_Click_1(object sender, EventArgs e)
         {
             configForm.ShowDialog();
+        }
+        private void Form1_Load(object sender,EventArgs e)
+        {
+            using (var reader = XmlReader.Create("mailsetting.xml")) 
+            {
+            
+            
+            }
         }
     }
 }
