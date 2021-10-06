@@ -6,14 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Windows.Forms;
-
-
+using System.Runtime.Serialization;
 
 namespace SendMail {
     public partial class ConfigForm : Form {
-        Form1 f1;
-        public Settings Settings = new Settings();
+        private Settings settings = Settings.getInstance();
 
         public ConfigForm()
         {
@@ -22,41 +21,49 @@ namespace SendMail {
 
         private void btDefault_Click(object sender, EventArgs e)
         {
-            Settings settings = new Settings();
-
-            tbHost.Text = settings.sHost();
-            tbUserName.Text = settings.sMailAddr();
-            tbPort.Text = settings.sPort();
-            tbPass.Text = settings.sPass();
+            tbHost.Text = settings.sHost(); //ホスト名
+            tbPort.Text = settings.sPort(); //ポート番号
+            tbUserName.Text = settings.sMailAddr(); //ユーザー名
+            tbPass.Text = settings.sPass(); //パスワード
+            cbSsl.Checked = settings.bSsl();    //SSL
+            tbSender.Text = settings.sMailAddr();   //送信元
         }
-        private void ConfigForm_Load(object sender, EventArgs e)
-        {
-            f1 = new Form1();
-        }
-        //OK
+        //OKボタン
         private void btOk_Click(object sender, EventArgs e)
         {
-            SettingsRegist();
+            SettingRegist();
+
             this.Close();
         }
 
-
-        private void SettingsRegist()
-        {
-            Settings.Host = tbHost.Text;
-            Settings.Port = int.Parse(tbPort.Text);
-            Settings.MailAddr = tbUserName.Text;
-            Settings.Pass = tbPass.Text;
-            Settings.Ssl = cbSsl.Checked;
-        }
-
-        //適用
+        //適用ボタン
         private void btApply_Click(object sender, EventArgs e)
         {
-            SettingsRegist(); //送信データ登録
+            SettingRegist();//送信データ登録
         }
 
-        //キャンセル
+        //送信データ登録
+        private void SettingRegist()
+        {
+            settings.Host = tbHost.Text;
+            settings.Port = int.Parse(tbPort.Text);
+            settings.MailAddr = tbUserName.Text;
+            settings.Pass = tbPass.Text;
+            settings.Ssl = cbSsl.Checked;
+
+            //シリアル化
+            var settingXml = new XmlWriterSettings {
+                Encoding = new System.Text.UTF8Encoding(false),
+                Indent = true,
+                IndentChars = " ",
+            };
+
+            using (var writer = XmlWriter.Create("settings.xml", settingXml)) {
+                var serializer = new DataContractSerializer(settingXml.GetType());
+                serializer.WriteObject(writer, settings);
+            }
+        }
+
         private void btCancel_Click(object sender, EventArgs e)
         {
             this.Close();

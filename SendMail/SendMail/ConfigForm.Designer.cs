@@ -131,7 +131,7 @@ namespace SendMail {
             // 
             // btOk
             // 
-            this.btOk.Location = new System.Drawing.Point(366, 229);
+            this.btOk.Location = new System.Drawing.Point(370, 229);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(75, 23);
             this.btOk.TabIndex = 2;

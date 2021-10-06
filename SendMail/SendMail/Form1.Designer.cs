@@ -36,9 +36,9 @@ namespace SendMail {
             this.label4 = new System.Windows.Forms.Label();
             this.tbBcc = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbTitle = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btConfig = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -135,13 +135,13 @@ namespace SendMail {
             this.label5.TabIndex = 0;
             this.label5.Text = "件名：";
             // 
-            // textBox2
+            // tbTitle
             // 
-            this.textBox2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox2.Location = new System.Drawing.Point(105, 136);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(519, 31);
-            this.textBox2.TabIndex = 2;
+            this.tbTitle.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbTitle.Location = new System.Drawing.Point(105, 136);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.Size = new System.Drawing.Size(519, 31);
+            this.tbTitle.TabIndex = 2;
             // 
             // button1
             // 
@@ -154,28 +154,28 @@ namespace SendMail {
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btSend_Click);
             // 
-            // button2
+            // btConfig
             // 
-            this.button2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(105, 461);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 40);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "設定";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btConfig.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btConfig.Location = new System.Drawing.Point(105, 461);
+            this.btConfig.Name = "btConfig";
+            this.btConfig.Size = new System.Drawing.Size(99, 40);
+            this.btConfig.TabIndex = 3;
+            this.btConfig.Text = "設定";
+            this.btConfig.UseVisualStyleBackColor = true;
+            this.btConfig.Click += new System.EventHandler(this.btConfig_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 558);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btConfig);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btSend);
             this.Controls.Add(this.tbMessage);
             this.Controls.Add(this.tbCc);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbTitle);
             this.Controls.Add(this.tbBcc);
             this.Controls.Add(this.tbTo);
             this.Controls.Add(this.label5);
@@ -199,9 +199,9 @@ namespace SendMail {
         private System.Windows.Forms.Button btSend;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbTitle;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btConfig;
         public System.Windows.Forms.TextBox tbTo;
         public System.Windows.Forms.TextBox tbCc;
         public System.Windows.Forms.TextBox tbBcc;

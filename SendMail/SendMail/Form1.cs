@@ -12,6 +12,12 @@ using System.Windows.Forms;
 
 namespace SendMail {
     public partial class Form1 : Form {
+        //設定画面
+        private ConfigForm configForm = new ConfigForm();
+
+        //設定情報
+        private Settings settings = Settings.getInstance();
+
         public Form1()
         {
             InitializeComponent();
@@ -23,14 +29,19 @@ namespace SendMail {
                 //メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
                 //差出人アドレス
-                mailMessage.From = new MailAddress("ojsinfosys01@gmail.com");
+                mailMessage.From = new MailAddress(settings.MailAddr);
                 //宛先（To）
                 mailMessage.To.Add(tbTo.Text);
-                // mailMessage.To.Add(tbTo.Text);
-                mailMessage.CC.Add(tbCc.Text);
-                mailMessage.Bcc.Add(tbBcc.Text);
+
+                if (tbCc.Text != "") {
+                    mailMessage.CC.Add(tbCc.Text);
+                }
+                if (tbBcc.Text != "") {
+                    mailMessage.Bcc.Add(tbBcc.Text);
+                }
+
                 //件名（タイトル）
-                mailMessage.Subject = tbCc.Text;
+                mailMessage.Subject = tbTitle.Text;
                 //本文
                 mailMessage.Body = tbMessage.Text;
 
@@ -38,22 +49,40 @@ namespace SendMail {
                 SmtpClient smtpClient = new SmtpClient();
                 //メール送信のための認証情報を設定（ユーザー名、パスワード）
                 smtpClient.Credentials
-                    = new NetworkCredential("ojsinfosys01@gmail.com", "Infosys2021");
-                smtpClient.Host = "smtp.gmail.com";
-                smtpClient.Port = 587;
-                smtpClient.EnableSsl = true;
-                smtpClient.Send(mailMessage);
+                    = new NetworkCredential(settings.MailAddr, settings.Pass);
+                smtpClient.Host = settings.Host;
+                smtpClient.Port = settings.Port;
+                smtpClient.EnableSsl = settings.Ssl;
 
-                MessageBox.Show("送信完了");
+                //smtpClient.Send(mailMessage);   //非同期でない場合
+
+                //送信完了時に呼ばれるイベントハンドラの登録
+                smtpClient.SendCompleted += SmtpClient_SendCompleted;
+                //smtpClient.SendCompleted += new　SendCompletedEventHandler(SmtpClient_SendCompleted);　//古い書き方
+
+                string userState = "SendMail";
+                smtpClient.SendAsync(mailMessage, userState);
+
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        //送信が完了すると呼ばれるコールバックメソッド
+        private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            new ConfigForm().ShowDialog();
+            if (e.Error != null) {
+                MessageBox.Show(e.Error.Message);
+            } else {
+                MessageBox.Show("送信完了");
+            }
+
+        }
+
+        private void btConfig_Click_1(object sender, EventArgs e)
+        {
+            configForm.ShowDialog();
         }
     }
 }
