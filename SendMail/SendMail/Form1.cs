@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +24,11 @@ namespace SendMail {
         public Form1()
         {
             InitializeComponent();
+            var filePath = @"./settings.xml";
+            if (!File.Exists(filePath))
+            {               
+                 configForm.ShowDialog();
+            }
         }
 
         private void btSend_Click(object sender, EventArgs e)
@@ -84,13 +91,22 @@ namespace SendMail {
         private void btConfig_Click_1(object sender, EventArgs e)
         {
             configForm.ShowDialog();
+
         }
         private void Form1_Load(object sender,EventArgs e)
         {
+            //XMLファイルを読み込み(逆シリアル化)
             using (var reader = XmlReader.Create("mailsetting.xml")) 
             {
-            
-            
+                
+                var serializer = new DataContractSerializer(typeof(Settings));
+                var readSettings = serializer.ReadObject(reader) as Settings;
+
+                settings.Host = readSettings.Host;
+                settings.Port = readSettings.Port;
+                settings.MailAddr = readSettings.MailAddr;
+                settings.Pass = readSettings.Pass;
+                settings.Ssl = readSettings.Ssl;
             }
         }
     }
