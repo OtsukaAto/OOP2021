@@ -31,37 +31,16 @@ namespace SendMail {
         //OKボタン
         private void btOk_Click(object sender, EventArgs e)
         {
-            SettingRegist();
-
+            btApply_Click(sender, e); //適応ボタンの処理を呼び出し
             this.Close();
         }
 
         //適用ボタン
         private void btApply_Click(object sender, EventArgs e)
         {
-            SettingRegist();//送信データ登録
-        }
-
-        //送信データ登録
-        private void SettingRegist()
-        {
-            settings.Host = tbHost.Text;
-            settings.Port = int.Parse(tbPort.Text);
-            settings.MailAddr = tbUserName.Text;
-            settings.Pass = tbPass.Text;
-            settings.Ssl = cbSsl.Checked;
-
-            //XMLファイルへ書き出し(シリアル化)
-            var settingXml = new XmlWriterSettings {
-                Encoding = new System.Text.UTF8Encoding(false),
-                Indent = true,
-                IndentChars = " ",
-            };
-
-            using (var writer = XmlWriter.Create("settings.xml", settingXml)) {
-                var serializer = new DataContractSerializer(settingXml.GetType());
-                serializer.WriteObject(writer, settings);
-            }
+            settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text),
+                tbUserName.Text, tbPass.Text, cbSsl.Checked);
+            //SettingRegist();//送信データ登録
         }
 
         private void btCancel_Click(object sender, EventArgs e)

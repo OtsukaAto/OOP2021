@@ -93,21 +93,19 @@ namespace SendMail {
             configForm.ShowDialog();
 
         }
-        private void Form1_Load(object sender,EventArgs e)
+ 
+        private void 新規作成NToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //XMLファイルを読み込み(逆シリアル化)
-            using (var reader = XmlReader.Create("mailsetting.xml")) 
-            {
-                
-                var serializer = new DataContractSerializer(typeof(Settings));
-                var readSettings = serializer.ReadObject(reader) as Settings;
+            tbTitle.Clear();
+            tbCc.Clear();
+            tbBcc.Clear();
+            tbTo.Clear();
+            tbMessage.Clear();
+        }
 
-                settings.Host = readSettings.Host;
-                settings.Port = readSettings.Port;
-                settings.MailAddr = readSettings.MailAddr;
-                settings.Pass = readSettings.Pass;
-                settings.Ssl = readSettings.Ssl;
-            }
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
