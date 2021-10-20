@@ -1,6 +1,7 @@
 ﻿using SampleEntityFramework.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,37 +13,30 @@ namespace SampleEntityFramework
     {
         static void Main(string[] args)
         {
-
-            //var db = new BooksDbContext();
-            //var count = db.Books.Count();
-            //    Console.WriteLine(count);
-            //    db.Database.Log = sql => { Debug.Write(sql); };
-            
-
             //データの追加
-            InsertBooks();
-            AddAuthors();
-            AddBooks();
+            //InsertBooks();
+            //AddAuthors();
+            //AddBooks();
 
-            Exercise13_1_1();
+            //Console.WriteLine("# 1.1");
+            //Exercise13_1_1();
 
-            //var authors = db.Authors.Where(a => a.Books.Count() >= 2);
-            //foreach (var authour in authors) {
-            //    Console.WriteLine($"{authour.Name}{authour.Gender}{authour.Birthday}");
-            //}
+            Console.WriteLine("# 1.2");
+            
+            foreach (var book in Exercise13_1_2()) {
+                Console.WriteLine($"{book.Title}{book.Author.Name}{book.PublishedYear}");
+            }
 
-            //var books = db.Books.OrderBy(b => b.PublishedYear).ThenBy(b => b.Author.Name).ToList();
-            //foreach (var book in books) {
-            //    Console.WriteLine($"{book.Title}{book.PublishedYear}{book.Author.Name}");
-            //}
+            Console.WriteLine("# 1.3");
+            Exercise13_1_3();
 
-            //var groups = db.Books.GroupBy(b => b.PublishedYear).Select(g => new {
-            //    Year = g.Key,
-            //    Count = g.Count()
-            //});
-            //foreach (var g in groups) {
-            //    Console.WriteLine($"{g.Year}{g.Count}");
-            //}
+            Console.WriteLine("# 1.4");
+            Exercise13_1_4();
+
+            Console.WriteLine("# 1.5");
+            Exercise13_1_5();
+
+            Console.ReadLine();
         }
 
         private static void Exercise13_1_1()
@@ -71,6 +65,48 @@ namespace SampleEntityFramework
                 db.Books.Add(book4);
 
                 db.SaveChanges();
+            }
+        }
+
+
+        private static IEnumerable<Book> Exercise13_1_2()
+        {
+            using (var db = new BooksDbContext()) {
+                return db.Books.Include(nameof(Author)).ToList();
+
+            }
+        }
+
+        private static void Exercise13_1_3()
+        {
+            using (var db = new BooksDbContext()) {
+                var title = db.Books.Where(c => c.Title.Length == db.Books.Max(n => n.Title.Length));
+
+                foreach (var titles in title) {
+                    Console.WriteLine($"タイトルが最も長い書籍{ titles.Title}");
+                }
+            }
+        }
+
+        private static void Exercise13_1_4()
+        {
+            using (var db = new BooksDbContext()) {
+                var book = db.Books.OrderBy(r => r.PublishedYear).Take(3);
+
+                foreach(var books in book) {
+                    Console.WriteLine($"{books.Title}{books.Author.Name}");
+                }
+            }
+        }
+
+        private static void Exercise13_1_5()
+        {
+            using (var db = new BooksDbContext()) {
+                var birthday = db.Books.OrderBy(m => m.Author.Birthday);
+                                    
+                foreach(var birthdays in birthday) {
+                    Console.WriteLine($"{ birthdays.Author.Birthday}");
+                }
             }
         }
 
@@ -138,7 +174,7 @@ namespace SampleEntityFramework
         {
             using (var db = new BooksDbContext())
             {
-                return db.Books.Where(book=>book.Author.Name.StartsWith("夏目")).ToList();
+                return db.Books.Include(nameof(Author)).ToList();
 
             }
         }
