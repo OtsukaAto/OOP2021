@@ -91,6 +91,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SendMail", "SendMail", "{17
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section04_Json", "Chapter14\Section04_Json\Section04_Json.csproj", "{12EA2E01-0103-4A65-85A0-8730C5AD0FDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleEntityFramework", "Chapter13\SampleEntityFramework\SampleEntityFramework.csproj", "{F99A8EF3-3C10-43A2-954B-9862B58AF202}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter13", "Chapter13", "{7B1EE284-4E84-4C4E-8C49-781EDAB2FCF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,6 +209,10 @@ Global
 		{12EA2E01-0103-4A65-85A0-8730C5AD0FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12EA2E01-0103-4A65-85A0-8730C5AD0FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12EA2E01-0103-4A65-85A0-8730C5AD0FDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F99A8EF3-3C10-43A2-954B-9862B58AF202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F99A8EF3-3C10-43A2-954B-9862B58AF202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F99A8EF3-3C10-43A2-954B-9862B58AF202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F99A8EF3-3C10-43A2-954B-9862B58AF202}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -239,6 +247,7 @@ Global
 		{0FEEF4E7-4243-4D5D-B9CA-742EB75C9291} = {E4AD8139-960C-453C-8329-2FA9FABFBAA5}
 		{A7E68E8B-AC5A-44A0-B599-5AD724FB6A87} = {174F3B73-E1F0-44E5-B538-DFD4180E1122}
 		{12EA2E01-0103-4A65-85A0-8730C5AD0FDE} = {5B287902-3E96-4DDF-BBAB-7C2A1FD8BB70}
+		{F99A8EF3-3C10-43A2-954B-9862B58AF202} = {7B1EE284-4E84-4C4E-8C49-781EDAB2FCF2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A20DEE8C-7300-48FC-A846-021FE9D758AA}
