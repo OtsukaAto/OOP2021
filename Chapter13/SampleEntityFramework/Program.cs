@@ -102,10 +102,15 @@ namespace SampleEntityFramework
         private static void Exercise13_1_5()
         {
             using (var db = new BooksDbContext()) {
-                var birthday = db.Books.OrderBy(m => m.Author.Birthday);
+                var birthday = db.Books.OrderByDescending(m => m.Author.Birthday);
+                var book = db.Books;
                                     
                 foreach(var birthdays in birthday) {
                     Console.WriteLine($"{ birthdays.Author.Birthday}");
+                }
+
+                foreach(var books in book) {
+                    Console.WriteLine($"{books.Title}{books.PublishedYear}");
                 }
             }
         }
