@@ -57,7 +57,7 @@ namespace AddressBook {
 
         private void personDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            if (personDataGridView.Rows.Count! = 0) {
+            if (personDataGridView.Rows.Count != 0) {
                 
                 tbName.Text = personDataGridView.CurrentRow.Cells[1].Value.ToString();
                 dtpDate.Value = (DateTime)personDataGridView.CurrentRow.Cells[2].Value;
