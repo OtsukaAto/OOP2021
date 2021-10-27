@@ -57,13 +57,12 @@ namespace AddressBook {
 
         private void personDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            if (personDataGridView.Rows.Count != 0) {
-                
-                tbName.Text = personDataGridView.CurrentRow.Cells[1].Value.ToString();
-                dtpDate.Value = (DateTime)personDataGridView.CurrentRow.Cells[2].Value;
-                tbTelephone.Text = personDataGridView.CurrentRow.Cells[3].Value.ToString();
-                tbMemo.Text = personDataGridView.CurrentRow.Cells[4].Value.ToString();
-            }
+            if (personDataGridView.CurrentRow == null) return;
+            if (personDataGridView.Rows.Count > 0) return;
+            tbName.Text = personDataGridView.CurrentRow.Cells[1].Value.ToString();
+            dtpDate.Value = (DateTime)personDataGridView.CurrentRow.Cells[2].Value;
+            tbTelephone.Text = personDataGridView.CurrentRow.Cells[3].Value.ToString();
+            tbMemo.Text = personDataGridView.CurrentRow.Cells[4].Value.ToString();
         }
 
         private void btBirthday_Click(object sender, EventArgs e)
