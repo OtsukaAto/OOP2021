@@ -155,54 +155,16 @@ namespace CarReportSystem {
             // dgvRegistData.Refresh(); //コントロールの強制再描画
         }
 
-       //更新ボタンイベント処理
-        private void btUpdate_Click(object sender, EventArgs e)
-        {
-#if false
-            if (sfdFileSave.ShowDialog() == DialogResult.OK) {
-                try {
-                    // バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(sfdFileSave.FileName, FileMode.Create)) {
-                        bf.Serialize(fs, listCarReport);
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.ToString(), "エラー");
-                }
-
-            }
-#endif
-        }
-
         //ファイルを開くボタン
-        private void btConnect_Click(object sender, EventArgs e)
+        private void btConnect_Click_1(object sender, EventArgs e)
         {
             //　TODO: このデータ
             this.carReportTableAdapter.Fill(this.infosys202120DataSet.CarReport);
-#if false
-
-    (ofdFileOpen.ShowDialog() == DialogResult.OK) {
-                try {
-                    // バイナリ形式で逆シリアル化
-                    var bf = new BinaryFormatter();
-                    using (FileStream fs = File.Open(ofdFileOpen.FileName, FileMode.Open, FileAccess.Read)) {
-                        // 逆シリアル化して読み込む
-                        listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvRegistData.DataSource = null;
-                        dgvRegistData.DataSource = listCarReport;
-                    }
-                }
-                catch (System.Runtime.Serialization.SerializationException ex) {
-                    MessageBox.Show(ex.ToString(), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                //読み込んだデータを各コンボボックスに登録する
-                for (int i = 0; i < dgvRegistData.RowCount; i++) {
-                    setCbAuthor(listCarReport[i].Auther);
-                    setCbCarName(listCarReport[i].CarName);
-                }
- }
-#endif
+            for (int i = 0;i < carReportDataGridView.RowCount; i++)
+            {
+                //setCbAuthor(carReportDataGridView.Rows[i].Cells[1].Value.ToString());
+                //setCbCarName(carReportDataGridView.Rows[i].Cells[3].Value.ToString());
+            }
         }
 
         private void fmMain_Load(object sender, EventArgs e)
@@ -210,6 +172,14 @@ namespace CarReportSystem {
             // TODO: このコード行はデータを 'infosys202124DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
 
             // dgvRegistData.Columns[5].Visible = false;
+            carReportDataGridView.Columns[0].Visible = false;
+            carReportDataGridView.Columns[1].HeaderText = "日付";
+            carReportDataGridView.Columns[2].HeaderText = "記録者";
+            carReportDataGridView.Columns[3].HeaderText = "メーカー";
+            carReportDataGridView.Columns[4].HeaderText = "車名";
+            carReportDataGridView.Columns[5].HeaderText = "レポート";
+            carReportDataGridView.Columns[6].Visible = false;
+
         }
 
         private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -217,6 +187,7 @@ namespace CarReportSystem {
             this.Validate();
             this.carReportBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202120DataSet);
+            
 
         }
 
@@ -232,36 +203,49 @@ namespace CarReportSystem {
             carReportDataGridView.CurrentRow.Cells[5].Value = tbReport.Text; //レポート
             carReportDataGridView.CurrentRow.Cells[6].Value = ImageToByteArray(pbPicture.Image); //画像
 
+            ssErrorLavel.Text = null;
 
             //データベースへ反映
             this.Validate();
             this.carReportBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202120DataSet);
         }
+
         private void carReportDataridVierw_SelectionChanged(object sender,EventArgs e) 
         {
             if (carReportDataGridView.CurrentRow == null) return;
             try {
-
+                ssErrorLavel.Text = null;
                 dtpDate.Value = (DateTime)carReportDataGridView.CurrentRow.Cells[1].Value; //日付
                 cbAuthor.Text = carReportDataGridView.CurrentRow.Cells[2].Value.ToString(); //記録者
-                setMakerRadioButton((CarReport.MakerGroup)Enum.Parse(typeof(CarReport.MakerGroup),carReportDataGridView.CurrentRow.Cells[3].Value.ToString())); //メーカー
                 cbCarName.Text = carReportDataGridView.CurrentRow.Cells[4].Value.ToString(); //車名
                 tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString(); //レポート
+                //メーカー(文字列　→　列挙型)
+                var mk = (CarReport.MakerGroup)Enum.Parse(typeof(CarReport.MakerGroup), carReportDataGridView.CurrentRow.Cells[3].Value.ToString());
+                setMakerRadioButton(mk);
                 pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value); //画像
             }
-            catch (Exception) 
+            catch (InvalidCastException) 
             {
                 pbPicture.Image = null;
             }
+            catch (Exception ex) 
+            {
+                ssErrorLavel.Text = ex.Message;
+            }
         }
+
         // バイト配列をImageオブジェクトに変換
         public static Image ByteArrayToImage(byte[] b)
         {
-            ImageConverter imgconv = new ImageConverter();
-            Image img = (Image)imgconv.ConvertFrom(b);
+            Image img = null;
+            if (b.Length > 0) {
+                ImageConverter imgconv = new ImageConverter();
+                img = (Image)imgconv.ConvertFrom(b);
+            }
             return img;
         }
+
         // Imageオブジェクトをバイト配列に変換
         public static byte[] ImageToByteArray(Image img)
         {
@@ -270,6 +254,15 @@ namespace CarReportSystem {
             return b;
         }
 
+        //新規追加ボタン
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void carReportDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
     }
 }
