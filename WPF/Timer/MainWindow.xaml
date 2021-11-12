@@ -1,0 +1,103 @@
+﻿<Window x:Class="Timer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Timer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="71" Width="203" WindowStyle="None" AllowsTransparency="False" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterScreen" Topmost="True" Closed="Window_Closed" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="{x:Null}" />
+        </Style>
+        <Style TargetType="Image">
+            <Setter Property="Stretch" Value="None" />
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
+        <ColorConverter x:Key="ColorConverter"/>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition  Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Viewbox Stretch="Uniform" Grid.Row="0" >
+            <StackPanel>
+                <TextBox x:Name="uxEditPanel" Visibility="Collapsed" TextWrapping="Wrap" Margin="2,0,0,2" Text="00:00:00" PreviewKeyDown="uxEditPanel_PreviewKeyDown" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{Binding ElementName=uxFontList,Path=Text}"/>
+                <TextBlock x:Name="uxCounter" TextWrapping="Wrap" Margin="2,0,0,2" Text="00:00:00" HorizontalAlignment="Center" VerticalAlignment="Center" PreviewMouseDown="uxCounter_PreviewMouseDown" FontFamily="{Binding ElementName=uxFontList,Path=Text}">
+                    <TextBlock.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="レイアウト" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="フォント" Width="50" />
+                                    <ComboBox Width="200" x:Name="uxFontList" Margin="0,2,10,2" HorizontalAlignment="Left" ItemsSource="{Binding}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" FontFamily="{Binding}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <Button x:Name="uxDefaultFont" Height="20" VerticalContentAlignment="Center" Click="uxDefaultFont_Click" BorderThickness="1" Content="初期値に戻す"></Button>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="文字色" Width="50"/>
+                                    <ComboBox x:Name="uxFontColor" Width="200" Margin="0,2,10,2" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Height="24" 
+                                              VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" 
+                                              SelectionChanged="uxFontColor_SelectionChanged">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black"  >
+                                                        <Border.Background>
+                                                            <SolidColorBrush Color="{Binding Color}"/>
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <Button x:Name="uxDefaultColor" Height="20"  VerticalContentAlignment="Center" Click="uxDefaultColor_Click" BorderThickness="1" Content="初期値に戻す"></Button>
+                                </StackPanel>
+                            </MenuItem>
+                            <MenuItem Header="現在のカウントダウン値を変更" Click="EditCountDownMenuItem_Click" ></MenuItem>
+                            <MenuItem Header="カウントダウンの開始時間を設定" Click="SetCountDownMenuItem_Click" ></MenuItem>
+                            <MenuItem Header="カウントアップ後の動作" >
+                                <MenuItem Header="カウントダウンを停止する" x:Name="uxAfterStop" Click="uxCountUpMode_Click" IsCheckable="True"></MenuItem>
+                                <MenuItem Header="カウントダウンをループする" x:Name="uxAfterLoop" Click="uxCountUpMode_Click" IsCheckable="True"></MenuItem>
+                                <MenuItem Header="マイナスになってもカウントダウンを続ける" x:Name="uxAfterNone" Click="uxCountUpMode_Click" IsCheckable="True"></MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="カウントアップ時の処理">
+                                <MenuItem Header="プログラムを終了する" x:Name="uxIsShutdown"   IsCheckable="True"></MenuItem>
+                                <MenuItem Header="コマンドを実行する" x:Name="uxIsCommand" IsCheckable="True"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="（実行したいコマンド" Margin="0,0,10,0"/>
+                                    <TextBox x:Name="uxCommand" Width="200" />
+                                    <TextBlock Text=" ）" />
+                                </StackPanel>
+                            </MenuItem>
+                            <MenuItem x:Name="uxShutdownMenuItem" Header="終了" Click="uxShutdownMenuItem_Click" ></MenuItem>
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
+                </TextBlock>
+            </StackPanel>
+        </Viewbox>
+        <StackPanel Grid.Column="1" Height="63" VerticalAlignment="Top" HorizontalAlignment="Right" Width="30">
+            <Button x:Name="uxStart" HorizontalAlignment="Center"  VerticalAlignment="Top"  Click="uxStart_Click">
+                <Image Source="Images/arrow_run_16xLG.png" />
+            </Button>
+            <Button x:Name="uxStop"  HorizontalAlignment="Center"  VerticalAlignment="Top"  Click="uxStop_Click">
+                <Image Source="Images/Pause_17x16.png" />
+            </Button>
+            <Button x:Name="uxReset" HorizontalAlignment="Center"  VerticalAlignment="Top"  Click="uxReset_Click">
+                <Image Source="Images/Restart_16x.png" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
