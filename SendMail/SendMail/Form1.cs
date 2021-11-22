@@ -34,6 +34,7 @@ namespace SendMail {
         private void btSend_Click(object sender, EventArgs e)
         {
             try {
+                btSend.Enabled = false;
                 //メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
                 //差出人アドレス
@@ -46,6 +47,11 @@ namespace SendMail {
                 }
                 if (tbBcc.Text != "") {
                     mailMessage.Bcc.Add(tbBcc.Text);
+                }
+
+                if(tbMessage.Text.Trim() == "") {
+                    MessageBox.Show("本文を入力しろかすマジ死ねよ");
+                    return;
                 }
 
                 //件名（タイトル）
@@ -73,6 +79,7 @@ namespace SendMail {
 
             }
             catch (Exception ex) {
+                btSend.Enabled = true;
                 MessageBox.Show(ex.Message);
             }
         }
@@ -84,7 +91,15 @@ namespace SendMail {
                 MessageBox.Show(e.Error.Message);
             } else {
                 MessageBox.Show("送信完了");
+                tbTo.ResetText();
+                tbCc.ResetText();
+                tbBcc.ResetText();
+                tbTitle.ResetText();
+                tbMessage.ResetText();
             }
+
+            btSend.Enabled = true;
+
 
         }
 

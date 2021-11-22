@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace SendMail {
@@ -35,7 +36,7 @@ namespace SendMail {
                 //XMLファイルを読み込み(逆シリアル化)
                 try {
 
-                    using (var reader = XmlReader.Create("mailsetting.xml")) {
+                    using (var reader = XmlReader.Create("settings.xml")) {
 
                         var serializer = new DataContractSerializer(typeof(Settings));
                         var readSettings = serializer.ReadObject(reader) as Settings;
@@ -50,6 +51,9 @@ namespace SendMail {
                 //ファイルがない場合(初回起動時)
                 catch (Exception ex) 
                 {
+                    MessageBox.Show(ex.Message);
+                    ConfigForm config = new ConfigForm();
+                    config.ShowDialog();
                     Set = false; //データ未設定
                 }
             }

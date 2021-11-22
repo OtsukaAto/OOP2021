@@ -116,6 +116,7 @@ namespace SendMail {
             this.tbPass.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbPass.Location = new System.Drawing.Point(390, 49);
             this.tbPass.Name = "tbPass";
+            this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(136, 20);
             this.tbPass.TabIndex = 1;
             // 
@@ -147,6 +148,7 @@ namespace SendMail {
             this.btCancel.TabIndex = 2;
             this.btCancel.Text = "キャンセル";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btApply
             // 
