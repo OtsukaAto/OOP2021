@@ -22,23 +22,30 @@ namespace NumberGame {
     public partial class MainWindow : Window {
         public MainWindow()
         {
+
+            Random rnd = new Random();      // Randomオブジェクトを作成
+            seikai = rnd.Next(1, 26);        // 1から25までの値をランダムに取得
             InitializeComponent();
         }
-
-
+        private int seikai;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Random rnd = new Random();      // Randomオブジェクトを作成
-
-            int seikai = rnd.Next(1, 25);        // 1から25までの値をランダムに取得
+            var buttons = (Button)sender;
+            int button = int.Parse(buttons.Content.ToString());
+           
 
             Console.WriteLine(seikai.ToString());
-            if (seikai == ) {
-                Console.WriteLine("そうだよ");
-            } else {
-                Console.WriteLine("ちがいます");
+            if (seikai ==  button) {
+                text.Text = "そうに決まってんだろ山根バカすぎわろた";
+                buttons.Background = new SolidColorBrush(Colors.DeepPink);
+                return;
             }
-            Console.ReadLine();
+            if(button > seikai) {
+                text.Text = "答えとやまねのちんこは小さいです";
+            } else {
+                text.Text = "答えはもっと大きいです";
+            }
+            buttons.Background = new SolidColorBrush(Colors.HotPink);
         }
     }
 }

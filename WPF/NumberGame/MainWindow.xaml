@@ -60,6 +60,8 @@
         <Button  Content="23" Margin="5" Grid.Column="2" Grid.Row="5" Click="Button_Click"/>
         <Button  Content="24" Margin="5" Grid.Column="3" Grid.Row="5" Click="Button_Click"/>
         <Button  Content="25" Margin="5" Grid.Column="4" Grid.Row="5" Click="Button_Click"/>
-        
+
+        <TextBlock x:Name="text" Grid.Row="6" Grid.ColumnSpan="2"/>
+
     </Grid>
 </Window>
