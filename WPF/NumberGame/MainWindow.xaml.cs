@@ -36,12 +36,12 @@ namespace NumberGame {
 
             Console.WriteLine(seikai.ToString());
             if (seikai ==  button) {
-                text.Text = "そうに決まってんだろ山根バカすぎわろた";
+                text.Text = "あってる";
                 buttons.Background = new SolidColorBrush(Colors.DeepPink);
                 return;
             }
             if(button > seikai) {
-                text.Text = "答えとやまねのちんこは小さいです";
+                text.Text = "答えは小さいです";
             } else {
                 text.Text = "答えはもっと大きいです";
             }
